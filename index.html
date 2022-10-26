@@ -38,22 +38,32 @@
     </script>
     <title>QR Code Generator</title>
 </head>
-    <div class="bg-gray-400">       
-        <label for="link">Link:</label>
-        <input type="link" id="link" name="link"/>
-        <label for="size">Tamanho:</label>
-        <select name="size" id="size">
-            <option value="150">150x150</option>
-            <option value="300">300x300</option>
-            <option value="450">450x450</option>
-            <option value="600">600x600</option>
-            <option value="750">750x750</option>
-            <option value="900">900x900</option>
-        </select>
-        <button type="button" id="generate">Gerar</button>
-  
-        <div id="qrcode" class="my-0.5"></div>
-        <button type="button" id="download" style="display: none">Baixar</button>
-    </div>
+<body>
+    <div class="w-screen h-screen bg-sky-50">
+        <div class="container mx-auto grid gap-4 justify-center"> 
+            <div class="mt-6">
+                <label for="link" class="block">Link:</label>
+                <input type="text" id="link" name="link" class="block border-solid border border-black rounded p-1"/>
+            </div>      
+            <div>
+                <label for="size" class="block">Tamanho:</label>
+                <select name="size" id="size" class="block border-solid border border-black rounded p-1">
+                    <option value="150">150x150</option>
+                    <option value="300">300x300</option>
+                    <option value="450">450x450</option>
+                    <option value="600">600x600</option>
+                    <option value="750">750x750</option>
+                    <option value="900">900x900</option>
+                </select>
+            </div>
+            <div>
+                <button type="button" id="generate" class="block border-solid border border-black rounded p-1">Gerar</button>
+            </div>
+        </div>
+        <div class="container mx-auto grid gap-4 justify-center mt-6">  
+            <div id="qrcode" class="my-0.5"></div>
+            <button type="button" id="download" style="display: none" class="border-solid border border-black rounded">Baixar</button>
+        </div>
+    </div>    
 </body>
 </html>
