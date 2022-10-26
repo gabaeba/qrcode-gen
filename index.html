@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/qrcodejs@1.0.0/qrcode.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript">
+        window.addEventListener("load", (event) => {
+            const btnEl = document.getElementById("generate")
+            const linkEl = document.getElementById("link")
+            const sizeEl = document.getElementById("size")
+            const qrcodeEl = document.getElementById("qrcode")
+            const downloadEl = document.getElementById("download")
+            let qrcode
+            btnEl.onclick = () => {
+                if(qrcode) qrcodeEl.innerHTML = ""              
+                qrcode = new QRCode(qrcodeEl, {
+                    text: linkEl.value,
+                    width: sizeEl.value,
+                    height: sizeEl.value,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+                console.log({qrcode})
+            }
+            downloadEl.onclick = () => {
+                if(qrcode) {
+                    let downloadLink = document.createElement('a')
+                    downloadLink.href = qrcode._oDrawing._elImage.src
+                    downloadLink.download = "qrcode.png"
+                    downloadLink.click()
+                }                
+            }
+        })
+    </script>
+    <title>QR Code Generator</title>
+</head>
+    <div class="bg-gray-400">       
+        <label for="link">Link:</label>
+        <input type="link" id="link" name="link"/>
+        <label for="size">Tamanho:</label>
+        <select name="size" id="size">
+            <option value="150">150x150</option>
+            <option value="300">300x300</option>
+            <option value="450">450x450</option>
+            <option value="600">600x600</option>
+            <option value="750">750x750</option>
+            <option value="900">900x900</option>
+        </select>
+        <button type="button" id="generate">Gerar</button>
+  
+        <div id="qrcode" class="my-0.5"></div>
+        <button type="button" id="download">Baixar</button>
+    </div>
+</body>
+</html>
