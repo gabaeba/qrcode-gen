@@ -24,7 +24,7 @@
                     colorLight : "#ffffff",
                     correctLevel : QRCode.CorrectLevel.H
                 });
-                console.log({qrcode})
+                downloadEl.style.display = "block"
             }
             downloadEl.onclick = () => {
                 if(qrcode) {
@@ -53,8 +53,7 @@
         <button type="button" id="generate">Gerar</button>
   
         <div id="qrcode" class="my-0.5"></div>
-        <button type="button" id="download">Baixar</button>
-        teste
+        <button type="button" id="download" style="display: none">Baixar</button>
     </div>
 </body>
 </html>
